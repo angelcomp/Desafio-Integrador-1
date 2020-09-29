@@ -1,6 +1,7 @@
 package projeto.codigo
 
-class Curso(val nome: String, val codigoCurso: Int, val qtdMaximaAlunos: Int, val profTitular: ProfTitular, val profAdjunto: ProfAdjunto, val alunosMatriculados: MutableList<Aluno>) {
+class Curso(val nome: String, val codigoCurso: Int, val qtdMaximaAlunos: Int, var profTitular: ProfTitular? = null, var profAdjunto: ProfAdjunto? = null,
+            val alunosMatriculados: MutableList<Aluno> = mutableListOf()) {
     override fun equals(other: Any?): Boolean {
         if (other !is Curso) return false
         return codigoCurso == other.codigoCurso
@@ -11,7 +12,7 @@ class Curso(val nome: String, val codigoCurso: Int, val qtdMaximaAlunos: Int, va
     }
 
     fun adicionarAluno(umAluno: Aluno): Boolean {
-        if (alunosMatriculados.size == qtdMaximaAlunos) return false
+        if (alunosMatriculados.size >= qtdMaximaAlunos) return false
         alunosMatriculados.add(umAluno)
         return true
     }
