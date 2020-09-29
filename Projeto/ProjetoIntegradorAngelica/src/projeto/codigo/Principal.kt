@@ -5,11 +5,10 @@ import java.util.*
 
 fun main() {
     val aluno = Aluno("Angelica", "Santos", 123)
-    val aluno2 = Aluno("Angelica", "Santos", 123)
+    val aluno2 = Aluno("Eduarda", "Pádua", 123)
     val aluno3 = Aluno("Adrian", "Almeida", 1234)
-    val aluno4 = Aluno("Camila", "Pitanga", 12345)
+    val aluno4 = Aluno("Camilaaaa", "Pitanga", 12345)
     val aluninhos = mutableListOf(aluno,aluno2,aluno3)
-
 
    // println("Comparando alunos diferentes: ${aluno.equals(aluno3)}")
    // println("Comparando alunos iguais: ${aluno.equals(aluno2)}")
@@ -46,10 +45,18 @@ fun main() {
     manager.registarCurso("blabla", 852, 50)
 
     try {
-        manager.excluirCurso(1)
+        manager.excluirCurso(852)
     } catch (e: Exception) {
+        println(" Ocorreu erro ao ecluir um curso... z_z\n")
         e.printStackTrace()
     }
 
     manager.registrarProfessorAdjunto("Sabrina", "Carpenter", 963, 10)
+    manager.registrarProfessorTitular("Camila", "Cabello", 125, "alskdjlasjd")
+    manager.excluirProfessor(963)
+    manager.matricularAluno("Lauren", "jauregui", 2707)
+    manager.matricularAlunoNoCurso(2707, 789)
+    manager.matricularAlunoNoCurso(2707, 789)
+    manager.alocarProfessores(789,125,963)
+    manager.testeListas(aluninhos, profs, cursinhos, matriculas)
 }
