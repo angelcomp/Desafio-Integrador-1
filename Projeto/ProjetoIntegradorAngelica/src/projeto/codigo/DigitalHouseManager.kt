@@ -17,10 +17,10 @@ class DigitalHouseManager(val listaAlunos: MutableList<Aluno> = mutableListOf(),
     fun excluirCurso(codigoCurso: Int) {
         println("\n\t ~~ Excluindo um novo Curso ~~")
 
-        val procurandoCurso = listaCursos.first { it.codigoCurso == codigoCurso }
-        listaCursos.remove(procurandoCurso)
+        val curso = listaCursos.first { it.codigoCurso == codigoCurso }
+        listaCursos.remove(curso)
 
-        println("  O curso '${procurandoCurso.nome}' foi excluído!")
+        println("  O curso '${curso.nome}' foi excluído!")
     }
 
     fun registrarProfessorAdjunto(nome: String, sobrenome: String, codigoProfessor: Int, qtdHorasMonitoria: Int) {
@@ -44,10 +44,10 @@ class DigitalHouseManager(val listaAlunos: MutableList<Aluno> = mutableListOf(),
     fun excluirProfessor(codigoProfessor: Int) {
         println("\n\t ~~ Excluindo um Professor ~~")
 
-        val procurandoProf = listaProfs.first { it.codigoProfessor == codigoProfessor }
-        listaProfs.remove(procurandoProf)
+        val prof = listaProfs.first { it.codigoProfessor == codigoProfessor }
+        listaProfs.remove(prof)
 
-        println("  O professor '${procurandoProf.nome}' está indo embora.. bye bye")
+        println("  O professor '${prof.nome}' está indo embora.. bye bye")
     }
 
     fun matricularAluno(nome: String, sobrenome: String, codigoAluno: Int) {
@@ -66,10 +66,6 @@ class DigitalHouseManager(val listaAlunos: MutableList<Aluno> = mutableListOf(),
         val aluno = listaAlunos.first { it.codigoAluno == codigoAluno }
         val matriculandoAluno = curso.adicionarAluno(aluno)
 
-        println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-        println(curso)
-        println(aluno)
-        println(matriculandoAluno)
         if(matriculandoAluno) {
             val novaMatricula = Matricula(aluno, curso)
             listaMatriculas.add(novaMatricula)
@@ -77,7 +73,7 @@ class DigitalHouseManager(val listaAlunos: MutableList<Aluno> = mutableListOf(),
 
             println("  A matricula do aluno '${aluno.nome}' no curso '${curso.nome}' foi realizada com sucesso!")
         }  else {
-            println("  Não foi possível realizar a matrícula porque não há vagas :c")
+            println("  Não foi possível realizar a matrícula! :c")
         }
     }
 
@@ -95,24 +91,6 @@ class DigitalHouseManager(val listaAlunos: MutableList<Aluno> = mutableListOf(),
         if(pAdjunto is ProfAdjunto) {
             curso.profAdjunto = pAdjunto
         }
-    }
-
-    fun testeListas() {
-        println("\t**************************************")
-        for (nome in listaAlunos) {
-            print("  ${nome.nome}")
-        }
-        println("\n")
-        for (nome in listaProfs) {
-            print("  ${nome.nome}")
-        }
-        println("\n")
-        for (nome in listaCursos) {
-            print("  ${nome.nome}")
-        }
-        println("\n")
-        for (nome in listaMatriculas) {
-            print("  ${nome.aluno.nome}")
-        }
+        println("  Os professores '${pTitular.nome}' e '${pAdjunto.nome}' foram colocados no curso '${curso.nome}'!")
     }
 }

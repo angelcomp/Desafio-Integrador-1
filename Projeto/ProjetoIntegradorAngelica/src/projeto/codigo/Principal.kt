@@ -4,7 +4,6 @@ import java.lang.Exception
 import java.util.*
 
 fun main() {
-    println("")
     val aluno = Aluno("Angelica", "Santos", 123)
     val aluno2 = Aluno("Eduarda", "Pádua", 123)
     val aluno3 = Aluno("Adrian", "Almeida", 1234)
@@ -14,8 +13,8 @@ fun main() {
     val aluninhos3 = mutableListOf(aluno3)
     val aluninhos4 = mutableListOf(aluno4)
 
-   // println("Comparando alunos diferentes: ${aluno.equals(aluno3)}")
-   // println("Comparando alunos iguais: ${aluno.equals(aluno2)}")
+    // println("Comparando alunos diferentes: ${aluno.equals(aluno3)}")
+    // println("Comparando alunos iguais: ${aluno.equals(aluno2)}")
 
     val prof = Professor("Luiz", "Silva", 20, 147)
     val titular = ProfTitular("Luiz", "Silva", 20, 147, "dar aulas divertidas")
@@ -31,7 +30,7 @@ fun main() {
     val cursinhos = mutableListOf(curso1, curso2, curso3)
 
     //println("Nome alunos: ${aluninhos}")
-   // curso1.adicionarAluno(aluno4)
+    // curso1.adicionarAluno(aluno4)
     //println("Nome alunos: ${aluninhos}")
     //curso1.excluirAluno(aluno4)
     //println("Nome alunos: ${aluninhos}")
@@ -44,7 +43,7 @@ fun main() {
 
     //println(matriula1)
 
-    val manager = DigitalHouseManager(aluninhos,profs, cursinhos, matriculas)
+    val manager = DigitalHouseManager(aluninhos, profs, cursinhos, matriculas)
     //manager.testeListas()
 
     manager.registarCurso("blabla", 852, 50)
@@ -67,6 +66,6 @@ fun main() {
 
     manager.matricularAlunoNoCurso(codigoDoAluno, 789)
     manager.matricularAlunoNoCurso(codigoDoAluno, 789)
-    manager.alocarProfessores(789,125,963)
+    manager.alocarProfessores(789, 125, 963)
     manager.testeListas()
 }
