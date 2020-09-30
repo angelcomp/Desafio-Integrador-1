@@ -4,11 +4,15 @@ import java.lang.Exception
 import java.util.*
 
 fun main() {
+    println("")
     val aluno = Aluno("Angelica", "Santos", 123)
     val aluno2 = Aluno("Eduarda", "Pádua", 123)
     val aluno3 = Aluno("Adrian", "Almeida", 1234)
-    val aluno4 = Aluno("Camilaaaa", "Pitanga", 12345)
-    val aluninhos = mutableListOf(aluno,aluno2,aluno3)
+    val aluno4 = Aluno("Joice", "Pitanga", 12345)
+    val aluninhos = mutableListOf(aluno)
+    val aluninhos2 = mutableListOf(aluno2)
+    val aluninhos3 = mutableListOf(aluno3)
+    val aluninhos4 = mutableListOf(aluno4)
 
    // println("Comparando alunos diferentes: ${aluno.equals(aluno3)}")
    // println("Comparando alunos iguais: ${aluno.equals(aluno2)}")
@@ -21,15 +25,15 @@ fun main() {
     //println(titular)
     //println(adjunto)
 
-    val curso1 = Curso("Kotlin", 789, 15, titular, adjunto, aluninhos)
-    val curso2 = Curso("Python", 789, 15, titular, adjunto, aluninhos)
-    val curso3 = Curso("Linguagem C", 456, 15, titular, adjunto, aluninhos)
+    val curso1 = Curso("Kotlin", 789, 15, titular, adjunto, aluninhos2)
+    val curso2 = Curso("Python", 789, 15, titular, adjunto, aluninhos3)
+    val curso3 = Curso("Linguagem C", 456, 15, titular, adjunto, aluninhos4)
     val cursinhos = mutableListOf(curso1, curso2, curso3)
 
     //println("Nome alunos: ${aluninhos}")
-    curso1.adicionarAluno(aluno4)
+   // curso1.adicionarAluno(aluno4)
     //println("Nome alunos: ${aluninhos}")
-    curso1.excluirAluno(aluno4)
+    //curso1.excluirAluno(aluno4)
     //println("Nome alunos: ${aluninhos}")
 
     //println("Comparando dois cursos iguais: ${curso1.equals(curso2)}")
@@ -38,25 +42,31 @@ fun main() {
     val matriula1 = Matricula(aluno, curso1)
     val matriculas = mutableListOf(matriula1)
 
-    println(matriula1)
+    //println(matriula1)
 
     val manager = DigitalHouseManager(aluninhos,profs, cursinhos, matriculas)
+    //manager.testeListas()
 
     manager.registarCurso("blabla", 852, 50)
+    //manager.testeListas()
 
     try {
         manager.excluirCurso(852)
     } catch (e: Exception) {
-        println(" Ocorreu erro ao ecluir um curso... z_z\n")
+        println(" Ocorreu erro ao exluir um curso... z_z\n")
         e.printStackTrace()
     }
 
+    val codigoDoAluno = 2707
     manager.registrarProfessorAdjunto("Sabrina", "Carpenter", 963, 10)
     manager.registrarProfessorTitular("Camila", "Cabello", 125, "alskdjlasjd")
     manager.excluirProfessor(963)
-    manager.matricularAluno("Lauren", "jauregui", 2707)
-    manager.matricularAlunoNoCurso(2707, 789)
-    manager.matricularAlunoNoCurso(2707, 789)
+    manager.matricularAluno("Lauren", "jauregui", codigoDoAluno)
+
+    manager.testeListas()
+
+    manager.matricularAlunoNoCurso(codigoDoAluno, 789)
+    manager.matricularAlunoNoCurso(codigoDoAluno, 789)
     manager.alocarProfessores(789,125,963)
-    manager.testeListas(aluninhos, profs, cursinhos, matriculas)
+    manager.testeListas()
 }

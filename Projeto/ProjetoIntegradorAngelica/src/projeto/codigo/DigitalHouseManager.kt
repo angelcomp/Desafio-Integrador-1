@@ -1,9 +1,9 @@
 package projeto.codigo
 
-class DigitalHouseManager(val listaAlunos: MutableList<Aluno>,
-                          val listaProfs: MutableList<Professor>,
-                          val listaCursos: MutableList<Curso>,
-                          val listaMatriculas: MutableList<Matricula>) {
+class DigitalHouseManager(val listaAlunos: MutableList<Aluno> = mutableListOf(),
+                          val listaProfs: MutableList<Professor> = mutableListOf(),
+                          val listaCursos: MutableList<Curso> = mutableListOf(),
+                          val listaMatriculas: MutableList<Matricula> = mutableListOf()) {
 
     fun registarCurso(nome: String, codigoCurso: Int, qtdMaximaAlunos: Int) {
         println("\n\t ~~ Registrando um novo Curso ~~")
@@ -66,9 +66,14 @@ class DigitalHouseManager(val listaAlunos: MutableList<Aluno>,
         val aluno = listaAlunos.first { it.codigoAluno == codigoAluno }
         val matriculandoAluno = curso.adicionarAluno(aluno)
 
+        println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+        println(curso)
+        println(aluno)
+        println(matriculandoAluno)
         if(matriculandoAluno) {
             val novaMatricula = Matricula(aluno, curso)
             listaMatriculas.add(novaMatricula)
+            println(novaMatricula)
 
             println("  A matricula do aluno '${aluno.nome}' no curso '${curso.nome}' foi realizada com sucesso!")
         }  else {
@@ -83,14 +88,17 @@ class DigitalHouseManager(val listaAlunos: MutableList<Aluno>,
         val pAdjunto = listaProfs.first { it.codigoProfessor == codigoProfessorAdjunto }
         val curso = listaCursos.first { it.codigoCurso == codigoCurso }
 
-        //curso.profTitular = pTitular
-        //curso.profAdjunto = pAdjunto
+        if(pTitular is ProfTitular) {
+            curso.profTitular = pTitular
+        }
 
-        println("nao terminado")
+        if(pAdjunto is ProfAdjunto) {
+            curso.profAdjunto = pAdjunto
+        }
     }
 
-    fun testeListas(listaAlunos: MutableList<Aluno>, listaProfs: MutableList<Professor>, listaCursos: MutableList<Curso>, listaMatriculas: MutableList<Matricula>) {
-
+    fun testeListas() {
+        println("\t**************************************")
         for (nome in listaAlunos) {
             print("  ${nome.nome}")
         }

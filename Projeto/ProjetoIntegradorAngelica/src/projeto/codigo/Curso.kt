@@ -17,6 +17,7 @@ class Curso(val nome: String,
     }
 
     fun adicionarAluno(umAluno: Aluno): Boolean {
+        println(alunosMatriculados)
         if (alunosMatriculados.size >= qtdMaximaAlunos) return false
         if (alunosMatriculados.contains(umAluno)) return false
 

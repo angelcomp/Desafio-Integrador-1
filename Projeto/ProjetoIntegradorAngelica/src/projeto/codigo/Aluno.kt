@@ -9,4 +9,10 @@ class Aluno (val nome: String,
 
         return codigoAluno == other.codigoAluno
     }
+
+    override fun toString(): String {
+        return "Aluno(nome='$nome', sobrenome='$sobrenome', codigoAluno=$codigoAluno)"
+    }
+
+
 }
